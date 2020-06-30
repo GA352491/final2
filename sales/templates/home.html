@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% include 'status.html' %}
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-5">
+                <h5>Customers</h5>
+                <hr>
+                <div class="card card-body card-responsive">
+                    <a class="btn btn-primary btn-sm btn-block" href="{% url 'create_cus' %}">create customer </a>
+                    <table class="table table-bordered table-responsive table-sm example">
+                        <thead>
+                        <tr>
+                            <th>view</th>
+                            <th>name</th>
+                            <th>phone</th>
+                            <th>place</th>
+                            <th>date_created</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for data in customers %}
+                            <tr>
+                                <td><a class="btbtn btn-sm btn-info" href="{% url 'customer' data.id %}">view</a></td>
+                                <td>{{ data.name }}</td>
+                                <td>{{ data.phone }}</td>
+                                <td>{{ data.place }}</td>
+                                <td>{{ data.date_created }}</td>
+
+                                <td><a class="btn btn-sm btn-info" href="{% url 'updatecustomer' data.id %}">Update</a>
+                                </td>
+                                <td><a class="btn btn-sm btn-danger"
+                                       href="{% url 'deletecustomer' data.id %}">Delete</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            <div class="col-md-7">
+                <h5>Orders</h5>
+                <hr>
+                <div class="card card-body card-responsive">
+                    <a class="btn btn-sm btn-primary " href="{% url 'createinvoice' %}">Invoice </a>
+
+                    <table class="table  table-bordered table-sm table-responsive example ">
+                        <thead>
+                        <tr>
+                            <th>Invoice no</th>
+                            <th>customer name</th>
+                            <th>product name</th>
+                            <th>place</th>
+                            <th>no_of_products</th>
+                            <th>price</th>
+                            <th>GST</th>
+                            <th>total</th>
+                            <th>type</th>
+                            <th>date_created</th>
+                            <th>status</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                            <th>whatsapp</th>
+
+
+                        </tr>
+                        </thead>
+
+                        <tbody>
+
+                        {% for data in orders %}
+                            <tr>
+                                <td>{{ data.increment_number }}</td>
+                                <td>{{ data.customer_name }}</td>
+                                <td>{{ data.product_name }}</td>
+                                <td>{{ data.place }}</td>
+                                <td>{{ data.no_of_products }}</td>
+                                <td>{{ data.price }}</td>
+                                <td>{{ data.tax }}</td>
+                                <td> {{ data.get_total }} </td>
+                                <td>{{ data.bill_type }}</td>
+                                <td>{{ data.date_created }}</td>
+
+                                <td>{{ data.status }}</td>
+                                <td><a class="btn btn-sm btn-info" href="{% url 'updateinvoice' data.id %}">Update</a>
+                                </td>
+                                <td><a class="btn btn-sm btn-danger" href="{% url 'deleteinvoice' data.id %}">Delete</a>
+                                </td>
+                                <td><a class="btn btn-sm btn-success" href="{% url 'whatsapp' data.id %}">whatsapp</a>
+                                </td>
+
+
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

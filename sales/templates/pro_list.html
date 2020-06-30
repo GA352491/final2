@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% block content %}
+    <br>
+
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <h5>Product : {{ product.product_name }}</h5>
+                <hr>
+                <a class="btn btn-outline-info  btn-sm btn-block" href="">Update Customer</a>
+                <a class="btn btn-outline-info  btn-sm btn-block" href="">place new
+                    order</a>
+
+            </div>
+        </div>
+
+        <div class="col-md">
+            <div class="card card-body">
+                <h5>Information</h5>
+                <hr>
+                <p>company name: {{ product.company_name }}</p>
+                <p> Entry stock: {{ product.quantity }}</p>
+                <p>Current Stock :{{ c }}</p>
+            </div>
+        </div>
+
+        <div class="col-md">
+            <div class="card card-body">
+                <h5>Total Orders</h5>
+                <hr>
+                <h1 style="text-align: center;padding: 10px">{{ pro }}</h1>
+            </div>
+        </div>
+    </div>
+
+
+    <br>
+    <!--  <div class="row">
+        <div class="col">
+            <div class="card card-body">
+                <form method="get">
+
+                        {{myFilter.form}}
+
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+
+    </div>-->
+    <br>
+
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body ">
+                <table class="table  table-bordered table-sm table-responsive example ">
+                    <thead>
+                    <tr>
+                        <th>Invoice no</th>
+                        <th>customer name</th>
+                        <th>product name</th>
+                        <th>place</th>
+                        <th>no_of_products</th>
+                        <th>price</th>
+                        <th>GST</th>
+                        <th>total</th>
+                        <th>type</th>
+                        <th>date_created</th>
+                        <th>status</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for data in pro1 %}
+                        <tr>
+                            <td>{{ data.increment_number }}</td>
+                            <td>{{ data.customer_name }}</td>
+                            <td>{{ data.product_name }}</td>
+                            <td>{{ data.place }}</td>
+                            <td>{{ data.no_of_products }}</td>
+                            <td>{{ data.price }}</td>
+                            <td>{{ data.tax }}</td>
+                            <td>{{ data.get_total }}</td>
+                            <td>{{ data.bill_type }}</td>
+                            <td>{{ data.date_created }}</td>
+                            <td>{{ data.status }}</td>
+                            <td><a class="btn btn-sm btn-info" href="{% url 'updateinvoice' data.id %}">Update</a>
+                            </td>
+                            <td><a class="btn btn-sm btn-danger" href="{% url 'deleteinvoice' data.id %}">Delete</a>
+                            </td>
+
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

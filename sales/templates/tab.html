@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tab</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+
+</head>
+<body>
+
+<table class="table table-striped table-bordered example " style="width:100%">
+    <tr>
+        <th>product name</th>
+        <th>company name</th>
+        <th>quantity</th>
+        <th>price</th>
+        <th>date</th>
+        <th>balance quantity</th>
+    </tr>
+    {% for i in products %}
+        <tr>
+            <td>{{ i.product_name }}</td>
+            <td>{{ i.company_name }}</td>
+            <td>{{ i.quantity }}</td>
+            <td>{{ i.price }}</td>
+            <td>{{ i.date_created }}</td>
+            <td>{{ i.r_total }}</td>
+
+        </tr>
+    {% endfor %}
+
+</table>
+
+<script src=" https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src=" https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src=" https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+        $('.example').DataTable();
+    });
+</script>
+</body>
+</html>

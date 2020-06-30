@@ -1,0 +1,295 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <br>
+    <div class="row">
+        <div class="col">
+            <div class="col-md">
+                <div class="card text-center text-white  mb-3" id="total-orders">
+                    <div class="card-header">
+                        <h5 class="card-title">Total products</h5>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">{{ products.count }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="col-md">
+                <div class="card text-center text-white  mb-3" id="orders-delivered">
+                    <div class="card-header">
+                        <h5 class="card-title">total companies</h5>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">{{ com_count }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="col-md">
+                <div class="card text-center text-white  mb-3" id="orders-pending">
+                    <div class="card-header">
+                        <h5 class="card-title">Orders Pending</h5>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">{{ pending }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--   <div class="row">
+        <div class="col-sm-8">
+            <div class="card card-body"style="width: 50rem">
+                <h5>Products</h5>
+            </div>
+            <div class="card card-body" style="width: 50rem">
+                <table class="table table-sm " >
+                    <thead>
+                    <tr>
+                        <th>product name</th>
+                        <th>company name</th>
+                        <th>quantity</th>
+                        <th>price</th>
+                        <th>date</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+
+                    {% for data in products %}
+                        <tr>
+
+                        <td>{{ data.product_name }}</td>
+                        <td>{{ data.company_name }}</td>
+                        <td>{{ data.quantity }}</td>
+                        <td>{{ data.price }}</td>
+                        <td>{{ data.date_created }}</td>
+                        <td>{{ data.r_total }}</td>
+                    {% endfor %}
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+
+        <div class="card card-body" style="width: 20rem">
+            <table class="table table-sm" style="width: 16rem">
+
+                <tr>
+                    <th>stock available</th>
+                </tr>
+
+                <tbody>
+                {% for data in a %}
+                    <tr>
+                        <td>{{ data }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+
+
+            </table>
+        </div>
+    </div>
+
+    -->
+
+    <br>
+    <br>
+    <div class="container">
+
+        <!--<a class="btn btn-sm btn-info"  href="{% url 'create_stock' %}">create stock</a>-->
+
+        <div class="row">
+            <div class="col-md">
+                <div class="card card-body card-responsive ">
+
+
+                    <a class="btn btn-sm btn-info" href="{% url 'create_stock' %}">create stock</a>
+
+        <table class="table  table-bordered table-sm table-responsive example ">
+            <thead>
+            <tr>
+                <th>View</th>
+                <th>product name</th>
+                <th>company name</th>
+                <th>Quantity</th>
+                <th>entry date</th>
+                <th>price</th>
+                <th>stock available</th>
+                <th>Update</th>
+                <th>delete</th>
+
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for data in products %}
+                <tr>
+                    <td><a class="btbtn btn-sm btn-info" href="{% url 'product' data.id %}">view</a></td>
+                    <td>{{ data.product_name }}</td>
+                    <td>{{ data.company_name }}</td>
+                    <td>{{ data.quantity }}</td>
+                    <td>{{ data.date_created }}</td>
+                    <td>{{ data.price }}</td>
+                    <td>{{ data.stock_rem }}</td>
+                <td><a class="btn btn-sm btn-info" href="">Update</a>
+                                </td>
+                                <td><a class="btn btn-sm btn-danger" href="">Delete</a>
+                                </td>
+                </tr>
+            {% endfor %}
+
+
+            </tbody>
+        </table>
+
+              <!--      <table class="table  table-bordered table-sm table-responsive example ">
+                        <thead>
+                        <tr>
+                            {% for data in a %}
+                                <th>{{ data }}</th>
+                            {% endfor %}
+                            <th>update</th>
+                            <th>delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+
+                        {% for data in a.values %}
+                            <tr>
+
+
+                                {% for value in data %}
+                                    <td>{{ value }}</td>
+                                {% endfor %}
+
+                                <td><a class="btn btn-sm btn-info" href="">Update</a>
+                                </td>
+                                <td><a class="btn btn-sm btn-danger" href="">Delete</a>
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+
+
+                        </tbody>
+                    </table>-->
+
+
+                </div>
+            </div>
+        </div>
+
+       <!-- <table class="table  table-bordered table-sm table-responsive example ">
+            <thead>
+            <tr>
+                <th>View</th>
+                <th>product name</th>
+                <th>company name</th>
+                <th>Quantity</th>
+                <th>entry date</th>
+                <th>price</th>
+                <th>stock available</th>
+                <th>Update</th>
+                <th>delete</th>
+
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for data in products %}
+                <tr>
+                    <td><a class="btbtn btn-sm btn-info" href="{% url 'product' data.id %}">view</a></td>
+                    <td>{{ data.product_name }}</td>
+                    <td>{{ data.company_name }}</td>
+                    <td>{{ data.quantity }}</td>
+                    <td>{{ data.date_created }}</td>
+                    <td>{{ data.price }}</td>
+                    <td>{{ data.stock_rem }}</td>
+                <td><a class="btn btn-sm btn-info" href="">Update</a>
+                                </td>
+                                <td><a class="btn btn-sm btn-danger" href="">Delete</a>
+                                </td>
+                </tr>
+            {% endfor %}
+
+
+            </tbody>
+        </table>-->
+
+
+        <!--
+            <div class="col-sm-4">
+
+                <div class="card card-body bg-info" style="width: 20rem " >
+                    <h5>stock</h5>
+                </div>
+                <div class="card card-body " style="width: 20rem">
+                    <table class="table table-sm table-bordered" style="width: 16rem">
+
+                        <tr>
+                            <th>stock available</th>
+                        </tr>
+
+                        <tbody>
+                        {% for data in a %}
+                            <tr>
+                                <td>{{ data }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+
+
+                    </table>
+                </div>
+            </div>
+        -->
+    </div>
+    </div>
+    <!--
+    <table class="table table-sm">
+        <thead>
+        <tr>
+            {% for data in a %}
+                <th>{{ data }}</th>
+
+
+            {% endfor %}
+            <th>update</th>
+            <th>delete</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for data in a.values %}
+            <tr>
+                {% for value in data %}
+                    <td>{{ value }}</td>
+                {% endfor %}
+                <td><a class="btn btn-sm btn-info" href="">Update</a></td>
+                <td><a class="btn btn-sm btn-danger" href="">Delete</a></td>
+
+
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+-->
+{% endblock %}
